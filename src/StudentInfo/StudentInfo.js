@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import { connect } from 'react-redux';
+import { createStudent } from '../Actions/studentAction';
 
 class StudentInfo extends Component{
     // onChange={(event)=> this.setState({name:event.target.value})}
@@ -39,4 +41,8 @@ class StudentInfo extends Component{
   }
 }
 
-export default StudentInfo;
+export default connect (
+  null, {createStudent}
+)(StudentInfo);
+
+// export default StudentInfo;

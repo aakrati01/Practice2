@@ -6,6 +6,8 @@ import StudentList from './StudentList/StudentList';
 import StudentHeader from './StudentHaeder/StudentHeader';
 import Grade from './Grades/Grades';
 import StudentEditView from './StudentEditView/StudentEditView';
+import {Provider} from 'react-redux';
+import store from './Store'
 
 class App extends Component{
 
@@ -145,20 +147,22 @@ class App extends Component{
       )
     }
     return (
-      <div className="container">
-        <StudentInfo 
-          onChangeName={this.onChangeNameHandler}
-          onChangeMarks={this.onChangeMarksHandler}
-          onAddStudent={this.addStudentHandler}
-        />
-        <div style={{marginTop:'1.5rem'}}>
-            {/* {this.state.students.map((student)=>{
-              return <StudentList roll={student.rollNo} name={student.name} marks={student.marks}></StudentList>
-            })} */}
-          {students}
+      <Provider store = {store}>
+        <div className="container">
+          <StudentInfo 
+            onChangeName={this.onChangeNameHandler}
+            onChangeMarks={this.onChangeMarksHandler}
+            onAddStudent={this.addStudentHandler}
+          />
+          <div style={{marginTop:'1.5rem'}}>
+              {/* {this.state.students.map((student)=>{
+                return <StudentList roll={student.rollNo} name={student.name} marks={student.marks}></StudentList>
+              })} */}
+            {students}
+          </div>
+          {/* <ErrorMessage errorMessage="Error Not Found"></ErrorMessage> */}
         </div>
-        {/* <ErrorMessage errorMessage="Error Not Found"></ErrorMessage> */}
-      </div>
+      </Provider>
     );
   }
 }
